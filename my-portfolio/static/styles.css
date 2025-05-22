@@ -1,26 +1,318 @@
-body {
-    font-family: sans-serif;
+/* Reset and Basic Styling */
+body, html {
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    background-color: #fdfdfd;
+    line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif; /* Using a serif for headings for some contrast */
+    color: #222;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #007bff; /* A common blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Layout */
+/* The HTML structure uses <main><section>...</section></main>
+   Applying container styles to each section or main might be needed.
+*/
+
+header, main, footer {
+    display: block; /* Ensure semantic elements are block-level */
+}
+
+/* Header */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     text-align: center;
 }
 
-#project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
+header nav ul li {
+    display: inline-block;
+    margin-right: 20px;
 }
 
-.project {
-    border: 1px solid #ddd;
-    padding: 1rem;
+header nav ul li:last-child {
+    margin-right: 0;
+}
+
+header nav ul li a {
+    font-size: 1.1em;
+    color: #555;
+}
+
+/* Main Content Sections */
+main section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+main section:last-child {
+    border-bottom: none;
+}
+
+section h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+section h3 {
+    font-size: 1.5em;
+    color: #444;
+}
+
+/* Centering content within sections. This will apply to direct children or wrapped content. */
+main > section > h2,
+main > section > p,
+main > section > a[role="button"],
+main > section > form,
+main > section > div { /* This targets testimonial container, article containers */
+    max-width: 960px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px; 
+    padding-right: 20px;
+}
+
+
+/* Buttons */
+a[role="button"], button[type="submit"] {
+    display: inline-block;
+    background-color: #007bff; /* Default blue button */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 15px;
+}
+
+a[role="button"]:hover, button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    text-decoration: none;
+}
+
+/* Specific Section Styling */
+
+/* Book Promotion Section */
+#book-promotion > h2, #book-promotion > p, #book-promotion > a[role="button"] {
+    text-align: center;
+}
+
+#book-promotion div { /* Testimonials container */
+    margin-top: 25px;
+}
+
+#book-promotion article {
+    background-color: #f9f9f9;
+    border: 1px solid #e7e7e7;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+#book-promotion article footer {
+    font-style: italic;
+    text-align: right;
+    margin-top: 10px;
+    color: #777;
+    font-size: 0.9em;
+}
+
+/* About Section */
+#about > h2, #about > p, #about > a[role="button"] {
+    text-align: center;
+}
+
+/* Thought Leadership & Newsletter Archives - Articles/Items */
+#thought-leadership > div, #newsletter-archives > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+#thought-leadership article, #newsletter-archives article {
     background-color: #fff;
+    border: 1px solid #e7e7e7;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+#thought-leadership article h3, #newsletter-archives article h3 {
+    margin-top: 0; /* Remove extra margin for headings inside articles */
+}
+
+/* Center "EXPLORE ALL" / "EXPLORE ALL EDITIONS" buttons */
+#thought-leadership > a[role="button"],
+#newsletter-archives > a[role="button"] {
+    display: block; /* Make the button a block to center it */
+    width: -moz-fit-content; /* Firefox */
+    width: fit-content;
+    margin-top: 25px; /* Add some space above */
+}
+
+
+/* Brand Philosophy Section */
+#brand-philosophy > h2, #brand-philosophy > p {
+    text-align: center;
+}
+
+/* Contact Form */
+#contact form div {
+    margin-bottom: 15px;
+}
+
+#contact form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+#contact form input[type="text"],
+#contact form input[type="email"],
+#contact form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* So padding doesn't add to width */
+    font-size: 1em;
+}
+
+#contact form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contact form button[type="submit"] {
+    display: block;
+    width: auto; /* or width: 100% for full-width button */
+    margin-left: auto; /* Center button if width is auto */
+    margin-right: auto;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px 20px; /* Added horizontal padding */
+    margin-top: 30px;
+    background-color: #f0f0f0;
+    color: #555;
+    border-top: 1px solid #ddd;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+footer nav ul li {
+    display: inline-block;
+    margin-right: 15px;
+}
+footer nav ul li:last-child {
+    margin-right: 0;
+}
+
+footer nav ul li a, footer p a {
+    color: #007bff;
+}
+
+footer div p { /* For social media links */
+    margin: 8px 0;
+    font-size: 0.95em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    header nav ul li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    header nav ul {
+        text-align: center;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    section h3 {
+        font-size: 1.3em;
+    }
+
+    #thought-leadership > div, #newsletter-archives > div {
+        grid-template-columns: 1fr; /* Stack articles on smaller screens */
+    }
+    
+    /* Adjust padding for smaller screens */
+    main > section > h2,
+    main > section > p,
+    main > section > a[role="button"],
+    main > section > form,
+    main > section > div {
+        padding-left: 15px; 
+        padding-right: 15px;
+    }
+
+    footer {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px; /* Adjust base font size for small devices */
+    }
+    section h2 {
+        font-size: 1.6em;
+    }
+
+    a[role="button"], button[type="submit"] {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    #contact form input[type="text"],
+    #contact form input[type="email"],
+    #contact form textarea {
+        padding: 10px;
+    }
 }
